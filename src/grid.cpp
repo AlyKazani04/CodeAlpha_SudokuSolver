@@ -46,9 +46,14 @@ void Grid::update(sf::RenderWindow& window)
         {
             tempRect = cell.getGlobalBounds();
 
+            sf::Vector2f curMousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+
             if(tempRect.contains(mousePos))
             {
                 cell.setFillColor(sf::Color(200, 200, 200));
+
+                const auto cursor = sf::Cursor::createFromSystem(sf::Cursor::Type::Text).value();
+                window.setMouseCursor(cursor);
             } 
             else
             {
@@ -56,6 +61,15 @@ void Grid::update(sf::RenderWindow& window)
             }
         }
     }
+
+    sf::Rect<float> gridBounds = {{130,130}, {540,540}};
+
+    if(!gridBounds.contains(mousePos))
+    {
+        const auto cursor = sf::Cursor::createFromSystem(sf::Cursor::Type::Arrow).value();
+        window.setMouseCursor(cursor);
+    }
+
 }
 
 void Grid::draw(sf::RenderWindow& window)

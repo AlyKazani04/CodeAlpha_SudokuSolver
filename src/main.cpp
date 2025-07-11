@@ -1,15 +1,16 @@
 #include <SFML/Graphics.hpp>
 #include "grid.hpp"
 #include "interface.hpp"
-#include <iostream>
+#include "logic.hpp"
+
 
 int main(){
     sf::RenderWindow window(sf::VideoMode({800, 800}), "Sudoku Solver");
 
-    std::cout << "Current directory: " << std::filesystem::current_path() << std::endl;
-
     Grid grid;
     interface ui;
+
+    srand(time(0));
 
     while(window.isOpen())
     {
