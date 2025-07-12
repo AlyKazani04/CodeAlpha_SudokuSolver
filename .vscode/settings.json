@@ -1,6 +1,11 @@
 {
     "cmake.ignoreCMakeListsMissing": true,
     "files.associations": {
-        "stdexcept": "cpp"
+        "stdexcept": "cpp",
+        "array": "cpp",
+        "optional": "cpp",
+        "type_traits": "cpp",
+        "system_error": "cpp",
+        "tuple": "cpp"
     }
 }

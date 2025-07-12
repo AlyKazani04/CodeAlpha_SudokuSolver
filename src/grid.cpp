@@ -30,11 +30,28 @@ Grid::Grid()
             m_gridLinesX[i].setSize({540, 2});
             m_gridLinesY[i].setSize({2, 540});
         }
+    }
 
+    if(!m_font.openFromFile("../resources/RobotoCondensedRegular.ttf"))
+    {
+        throw std::runtime_error("Failed to load font!");
+    }
+    m_font.setSmooth(false);
+
+    m_map.resize(9);
+
+    for(auto& row : m_map)
+    {
+        row.resize(9);
+
+        for(int i = 0; i < 9; i++)
+        {
+            row[i] = 0;
+        }
     }
 }
 
-void Grid::update(sf::RenderWindow& window)
+void Grid::update(sf::RenderWindow& window, interface& ui)
 {
     sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 
@@ -70,6 +87,22 @@ void Grid::update(sf::RenderWindow& window)
         window.setMouseCursor(cursor);
     }
 
+    if(ui.isNewPressed(window, ui))
+    {
+        generateSudokuPuzzle(m_map, 45); // medium difficulty
+        m_resetMap = m_map;
+    }
+
+    if(ui.isResetPressed(window, ui))
+    {
+        resetMap(m_map);
+    }
+
+    if(ui.isSolvePressed(window, ui))
+    {
+        solve(m_map, 0, 0);
+    }
+
 }
 
 void Grid::draw(sf::RenderWindow& window)
@@ -79,12 +112,42 @@ void Grid::draw(sf::RenderWindow& window)
         for(int j = 0; j < 9; j++)
         {
             window.draw(m_cellRects[i][j]);
+
+            sf::Rect<float> cellBounds = m_cellRects[i][j].getGlobalBounds();
+
+            sf::Vector2f cellCenter({cellBounds.position.x + cellBounds.size.x / 2, cellBounds.position.y + cellBounds.size.y / 2});
+
+            sf::Text value(m_font,toString(m_map[i][j]), 20);
+            value.setFillColor(sf::Color::Black);
+
+            sf::Rect<float> textBounds = value.getLocalBounds();
+
+            value.setOrigin({textBounds.position.x + textBounds.size.x / 2, textBounds.position.y + textBounds.size.y / 2});
+
+            value.setPosition(cellCenter);
+
+            window.draw(value);
         }
-    }    
+    }
 
     for(int i = 0; i < 10; i++)
     {
         window.draw(m_gridLinesX[i]);
         window.draw(m_gridLinesY[i]);
     }
+}
+
+std::string Grid::toString(int num)
+{
+    if(num == 0)
+    {
+        return "";
+    }
+
+    return std::to_string(num);
+}
+
+void Grid::resetMap(std::vector<std::vector<int>>& map)
+{
+    m_map = m_resetMap; 
 }

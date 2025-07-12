@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <string>
 #include "interface.hpp"
 #include "logic.hpp"
 
@@ -9,7 +10,7 @@ class Grid : public Generator, public Solver
     public:
         Grid();
         
-        void update(sf::RenderWindow& window);
+        void update(sf::RenderWindow& window, interface& ui);
 
         void draw(sf::RenderWindow& window);
 
@@ -24,4 +25,12 @@ class Grid : public Generator, public Solver
         sf::RectangleShape m_gridLinesY[10];
 
         std::vector<std::vector<int>> m_map;
+
+        std::vector<std::vector<int>> m_resetMap;
+
+        sf::Font m_font;
+
+        std::string toString(int num);
+
+        void resetMap(std::vector<std::vector<int>>& map);
 };

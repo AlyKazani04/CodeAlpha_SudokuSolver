@@ -14,7 +14,7 @@ int main(){
 
     while(window.isOpen())
     {
-        while(const std::optional event = window.pollEvent())
+        while(const std::optional event = window.pollEvent()) // event handling
         {
             if(event->is<sf::Event::Closed>()){
                 window.close();
@@ -22,7 +22,7 @@ int main(){
         }
 
         { // Update
-            grid.update(window);
+            grid.update(window, ui);
         }
 
         { // Render

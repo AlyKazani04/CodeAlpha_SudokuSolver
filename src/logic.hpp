@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <cstdlib>
+#include <random>
 #include <ctime>
 #include <algorithm>
 #include <vector>
@@ -17,7 +18,7 @@ class Solver
 class Generator
 {
     protected:
-        const std::vector<int> m_numbers = {1,2,3,4,5,6,7,8,9};
+        std::vector<int> m_numbers = {1,2,3,4,5,6,7,8,9};
 
         bool fillGrid(std::vector<std::vector<int>>& map);
 

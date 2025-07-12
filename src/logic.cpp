@@ -10,7 +10,10 @@ bool Generator::fillGrid(std::vector<std::vector<int>>& map)
         {
             if(map[row][col] == 0)
             {
-                random_shuffle(m_numbers.begin(), m_numbers.end()); // Randomize numbers
+                std::random_device rd;
+                std::mt19937 gen(rd());
+                
+                std::shuffle(m_numbers.begin(), m_numbers.end(), gen); // Randomize numbers
 
                 for(int num : m_numbers)
                 {
