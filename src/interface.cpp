@@ -64,7 +64,19 @@ bool interface::isSolvePressed(sf::RenderWindow& window, const interface& ui)
     return false;
 }
 
-void interface::draw(sf::RenderWindow& window)
+bool interface::isModeChangePressed(sf::RenderWindow& window, const interface& ui)
+{
+    sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+
+    if(ui.m_modeBounds.contains(mousePos) && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+    {
+        return true;
+    }
+
+    return false;
+}
+
+void interface::draw(sf::RenderWindow& window, int& theme)
 {
     sf::Text Title(m_font, "Sudoku Solver", 40);
 
@@ -74,7 +86,6 @@ void interface::draw(sf::RenderWindow& window)
     sf::Sprite resetSprite(m_resetTexture);
     sf::Sprite solveSprite(m_solveTexture);
     sf::Sprite newSprite(m_newTexture);
-
 
     resetSprite.setScale({2,2});
     solveSprite.setScale({2,2});

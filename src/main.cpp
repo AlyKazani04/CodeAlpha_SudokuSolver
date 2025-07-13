@@ -7,8 +7,12 @@
 int main(){
     sf::RenderWindow window(sf::VideoMode({800, 800}), "Sudoku Solver");
 
+    window.setFramerateLimit(60);
+
     Grid grid;
     interface ui;
+
+    int theme = 1; // 0 for dark, 1 for light
 
     srand(time(0));
 
@@ -28,8 +32,8 @@ int main(){
         { // Render
             window.clear(sf::Color(50, 100, 200));
 
-            grid.draw(window);
-            ui.draw(window);
+            grid.draw(window, theme);
+            ui.draw(window, theme);
             
             window.display();
         }

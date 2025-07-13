@@ -105,7 +105,7 @@ void Grid::update(sf::RenderWindow& window, interface& ui)
 
 }
 
-void Grid::draw(sf::RenderWindow& window)
+void Grid::draw(sf::RenderWindow& window, const int theme)
 {
     for(int i = 0; i < 9; i++)
     {
