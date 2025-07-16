@@ -12,7 +12,9 @@ int main(){
     Grid grid;
     interface ui;
 
-    int theme = 1; // 0 for dark, 1 for light
+    int theme = 1;
+
+    sf::Color bgColor[2] = { sf::Color(30, 30, 30), sf::Color(50, 100, 200)};
 
     srand(time(0));
 
@@ -27,13 +29,24 @@ int main(){
 
         { // Update
             grid.update(window, ui);
+
+            ui.isDarkPressed(window);
+
+            if(ui.isDark())
+            {
+                theme = 0;
+            }
+            else
+            {
+                theme = 1;
+            }
         }
 
         { // Render
-            window.clear(sf::Color(50, 100, 200));
+            window.clear(bgColor[theme]);
 
-            grid.draw(window, theme);
-            ui.draw(window, theme);
+            grid.draw(window);
+            ui.draw(window);
             
             window.display();
         }

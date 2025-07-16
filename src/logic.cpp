@@ -50,43 +50,19 @@ void Generator::generatePuzzle(std::vector<std::vector<int>>& map, int holes)
     }
 }
 
-void Generator::generateSudokuPuzzle(std::vector<std::vector<int>>& map, int emptyCells)
+void Generator::generateSudokuPuzzle(std::vector<std::vector<int>>& puzzle, std::vector<std::vector<int>>& solution, int emptyCells)
 {
-    std::vector<std::vector<int>> tempMap;
-
-    tempMap.resize(9);
-
-    for(auto& rows : tempMap) // fill the 2d vector with 0s
-    {
-        rows.resize(9);
-        for(auto& cells : rows)
-        {
-            cells = 0;
-        }
-    }
+    std::vector<std::vector<int>> fullMap(9, std::vector<int>(9, 0));
 
     // Fill the board with a valid complete Sudoku
-    fillGrid(tempMap);
+    fillGrid(fullMap);
 
-    for(int i = 0; i < 9; i++)
-    {
-        for(int j = 0; j < 9; j++)
-        {
-            map[i][j] = tempMap[i][j];
-        }
-    }
+    // set this as solution
+    solution = fullMap;
 
-    // Copy the complete solution to the puzzle
-    for (int i = 0; i < 9; i++)
-    {
-        for (int j = 0; j < 9; j++)
-        {
-            map[i][j] = tempMap[i][j];
-        }
-    }
-
-    // Remove cells to create the puzzle
-    generatePuzzle(map, emptyCells);
+    // Create puzzle by copying and adding holes
+    puzzle = fullMap;
+    generatePuzzle(puzzle, emptyCells);
 }
 
 // Solving Logic

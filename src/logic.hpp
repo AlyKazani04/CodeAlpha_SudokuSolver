@@ -24,5 +24,5 @@ class Generator
 
         void generatePuzzle(std::vector<std::vector<int>>& map, int holes);
     public:
-        void generateSudokuPuzzle(std::vector<std::vector<int>>& map, int emptyCells);
+        void generateSudokuPuzzle(std::vector<std::vector<int>>& puzzle, std::vector<std::vector<int>>& solution, int emptyCells);
 };
