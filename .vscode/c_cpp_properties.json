@@ -4,8 +4,8 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "C:/CCPPLibraries/SFML-3.0.0/include",
-                "C:/Users/alyxb/OneDrive/Desktop/CodeAlphaTasks/CodeAlpha_SudokuSolver",
+                "/path/to/SFML-3.0.0/include",
+                "/path/to/CodeAlpha_SudokuSolver",
                 "${workspaceFolder}/src"
             ],
             "defines": [
