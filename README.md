@@ -9,8 +9,8 @@ A visually interactive **Sudoku Solver** built with **C++** and **SFML**, capabl
 **No setup required** — just download and run the latest version:
 
 - Go to the [Releases](https://github.com/AlyKazani04/CodeAlpha_SudokuSolver/releases) page
-- Download the executable
-- Run the application and start solving Sudoku puzzles instantly
+- Download the zip
+- Run the application (in src/), and start solving Sudoku puzzles instantly
 
 ## Features
 
