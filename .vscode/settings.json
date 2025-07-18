@@ -1,4 +1,5 @@
 {
+    "cmake.ignoreCMakeListsMissing": true,
     "files.associations": {
         "stdexcept": "cpp",
         "array": "cpp",
