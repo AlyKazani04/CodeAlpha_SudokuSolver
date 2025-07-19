@@ -2,8 +2,7 @@
 
 A visually interactive **Sudoku Solver** built with **C++** and **SFML**, capable of solving puzzles using a backtracking algorithm. The project features a clean GUI, cell selection, error checking, puzzle generation, and more — making it a complete utility for Sudoku enthusiasts and learners alike.
 
-> This project was developed as part of an internship at CodeAlpha.
-
+> This project was developed as part of an internship at CodeAlpha. (fake ahh internship, i got scammed...)
 ## Quick Start
 
 **No setup required** — just download and run the latest version:
